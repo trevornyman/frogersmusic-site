@@ -210,7 +210,8 @@ window.SITE = {
       <input type="hidden" name="fields[ref]" id="ref-field">
       <button class="btn" type="submit">Sign me up</button>
     </form>
-    <p class="thanks">You're in. Check your inbox to confirm.</p>
+    <p class="note" id="signup-error" role="alert" hidden></p>
+    <p class="thanks" role="status">You're in. Check your inbox (and Promotions/spam) for a confirmation email.</p>
   </section>
 
   <section class="card start">
@@ -277,14 +278,42 @@ window.SITE = {
     }
   }
 
-  // Email form: posts straight to Kit in a new tab (their confirm page),
-  // and we swap the form for a thank-you line here. Nothing is stored on this site.
+  // Email form: posts straight to Kit in the background and shows Kit's real
+  // answer here. Nothing is stored on this site. If the request can't be made
+  // at all, fall back to a normal form post (opens Kit's page in a new tab).
   var form = $("signup-form");
+  var btn = form.querySelector("button");
+  var err = $("signup-error");
   form.action = "https://app.kit.com/forms/" + encodeURIComponent(S.kitFormId) + "/subscriptions";
   $("ref-field").value = ref;
-  form.addEventListener("submit", function () {
-    track("Signup", { state: S.RELEASED ? "released" : "prerelease" });
-    setTimeout(function () { $("signup").classList.add("sent"); }, 50);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.hidden = true;
+    btn.disabled = true;
+    btn.textContent = "Signing you up…";
+    fetch(form.action, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new URLSearchParams(new FormData(form))
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.status === "failed") {
+          var msg = (data.errors && data.errors.messages || [])[0] || "";
+          throw new Error(/email/i.test(msg) ? "That email doesn't look right. Try again?" : "");
+        }
+        track("Signup", { state: S.RELEASED ? "released" : "prerelease" });
+        $("signup").classList.add("sent");
+      })
+      .catch(function (e2) {
+        if (e2 instanceof TypeError) { form.submit(); return; } // network/CORS: native post
+        err.textContent = e2.message || "Something went wrong. Please try again.";
+        err.hidden = false;
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = "Sign me up";
+      });
   });
 
   // Start with Reverser

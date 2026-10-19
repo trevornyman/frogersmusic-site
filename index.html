@@ -22,8 +22,7 @@ window.SITE = {
   // Flip to true on release day. That is the whole launch.
   RELEASED: false,
 
-  releaseDate: "[release date]",          // e.g. "November 21"
-  aboutLine:   "[one specific sentence on who Frogers is, in your own voice]",
+  releaseDate: "November 21",
 
   bandcampAlbum:    "https://frogers.bandcamp.com",  // swap for the album URL once it exists
   bandcampPreorder: "",                               // pre-order page URL, or leave "" to hide
@@ -163,8 +162,6 @@ window.SITE = {
   .sent .thanks { display: block; }
   .sent form { display: none; }
 
-  .about { margin: 26px 0 0; color: var(--muted); }
-
   .start h2 { margin: 0 0 12px; font-size: 18px; }
   .start iframe { display: block; width: 100%; height: 152px; border: 0; border-radius: 12px; }
   .start .link { font-weight: 600; color: var(--text); }
@@ -198,7 +195,7 @@ window.SITE = {
   <img class="cover" src="cover.jpg" width="1000" height="1000" alt="Succession EP cover art: a white dogwood flower over a rainbow gradient" fetchpriority="high" onerror="this.onerror=null;this.src='cover-placeholder.svg'">
 
   <p class="artist">Frogers × Neon Imposter</p>
-  <h1 id="headline">Succession, the new EP. Out [release date].</h1>
+  <h1 id="headline">Succession, the new EP from Frogers and Neon Imposter. Out November 21.</h1>
   <p class="sub">Name your price. Free is fine. Just leave an email.</p>
 
   <!-- Main action. Released: Bandcamp. Not released: jumps to the signup. -->
@@ -216,10 +213,8 @@ window.SITE = {
     <p class="thanks">You're in. Check your inbox to confirm.</p>
   </section>
 
-  <p class="about" id="about"></p>
-
   <section class="card start">
-    <h2>New here? Start with Reverser.</h2>
+    <h2>Listen Now</h2>
     <div id="spotify-slot"><a class="link" id="reverser-link" href="#">Listen on Spotify →</a></div>
   </section>
 
@@ -251,8 +246,7 @@ window.SITE = {
   // Copy
   $("headline").textContent = S.RELEASED
     ? "Succession, the new EP from Frogers and Neon Imposter. Out now."
-    : "Succession, the new EP from Frogers and Neon Imposter, " + S.releaseDate + ".";
-  $("about").textContent = S.aboutLine;
+    : "Succession, the new EP from Frogers and Neon Imposter. Out " + S.releaseDate + ".";
   $("year").textContent = new Date().getFullYear();
 
   // Main button + state

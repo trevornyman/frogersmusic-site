@@ -29,8 +29,9 @@ window.SITE = {
   bandcampPreorder: "",                               // pre-order page URL, or leave "" to hide
   bandcampEmbedId:  "",                               // album id for the Bandcamp player (released state only), or ""
 
-  // Mailing list: Buttondown username (form posts straight to Buttondown, nothing is stored here)
-  buttondownUser: "frogers",
+  // Mailing list: Kit form ID, the number in your form's URL (app.kit.com/forms/1234567/...).
+  // The form posts straight to Kit; nothing is stored here.
+  kitFormId: "REPLACE_ME",
 
   reverserSpotify: "https://open.spotify.com/track/3v7oddKtuh96iROTHP1z2d", // Reverser track URL
   showSpotifyEmbed: true,                                         // embedded player under "Start with Reverser"
@@ -208,9 +209,8 @@ window.SITE = {
   <section class="card" id="signup">
     <p>New music and shows first. No spam, unsubscribe any time.</p>
     <form id="signup-form" method="post" target="_blank">
-      <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
-      <input type="hidden" name="tag" id="ref-tag">
-      <input type="hidden" name="embed" value="1">
+      <input type="email" name="email_address" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
+      <input type="hidden" name="fields[ref]" id="ref-field">
       <button class="btn" type="submit">Sign me up</button>
     </form>
     <p class="thanks">You're in. Check your inbox to confirm.</p>
@@ -283,11 +283,11 @@ window.SITE = {
     }
   }
 
-  // Email form: posts straight to Buttondown in a new tab (their confirm page),
+  // Email form: posts straight to Kit in a new tab (their confirm page),
   // and we swap the form for a thank-you line here. Nothing is stored on this site.
   var form = $("signup-form");
-  form.action = "https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(S.buttondownUser);
-  $("ref-tag").value = "src-" + ref;
+  form.action = "https://app.kit.com/forms/" + encodeURIComponent(S.kitFormId) + "/subscriptions";
+  $("ref-field").value = ref;
   form.addEventListener("submit", function () {
     track("Signup", { state: S.RELEASED ? "released" : "prerelease" });
     setTimeout(function () { $("signup").classList.add("sent"); }, 50);

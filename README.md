@@ -12,7 +12,7 @@ Everything lives in the `window.SITE` block at the top of `index.html`.
 - Cover: drop a square `cover.jpg` (1500 px or larger, compressed to under ~300 KB) in this folder. Until then a placeholder shows.
 
 ## Services
-- **Email: Buttondown.** Set `buttondownUser` to your Buttondown username. Each subscriber gets a tag for where they came from (`src-ig`, `src-yt`, `src-direct`, …). Nothing is stored on this site.
+- **Email: Kit.** Set `kitFormId` to the number in your Kit form's URL. To record where each subscriber came from (`ig`, `yt`, `direct`, …), create a custom field named `ref` in Kit (Subscribers → Custom fields). Nothing is stored on this site.
 - **Analytics: Plausible.** It reads `?ref=` as the traffic source on its own. It also logs `Signup`, `Main Click`, `Bandcamp Click` and `Link Click` events with a `ref` property. To see them, add those goals and the `ref` custom property in Plausible. If you'd rather use something else, delete the Plausible script tags.
 - **Bandcamp:** turn on "require email address for free downloads" in the album settings.
 

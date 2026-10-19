@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frogers: Succession EP</title>
+<meta name="description" content="Succession, the new EP from Frogers and Neon Imposter. Name your price.">
+<meta property="og:title" content="Frogers: Succession EP">
+<meta property="og:description" content="Name your price. Free is fine. Just leave an email.">
+<meta property="og:image" content="https://frogersmusic.com/cover.jpg">
+<meta property="og:url" content="https://frogersmusic.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0e10">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://open.spotify.com">
+
+<script>
+/* ==================================================================
+   EDIT THIS BLOCK. Everything you will ever need to change is here.
+   ================================================================== */
+window.SITE = {
+  // Flip to true on release day. That is the whole launch.
+  RELEASED: false,
+
+  releaseDate: "[release date]",          // e.g. "November 21"
+  aboutLine:   "[one specific sentence on who Frogers is, in your own voice]",
+
+  bandcampAlbum:    "https://frogers.bandcamp.com",  // swap for the album URL once it exists
+  bandcampPreorder: "",                               // pre-order page URL, or leave "" to hide
+  bandcampEmbedId:  "",                               // album id for the Bandcamp player (released state only), or ""
+
+  // Mailing list: Buttondown username (form posts straight to Buttondown, nothing is stored here)
+  buttondownUser: "frogers",
+
+  reverserSpotify: "https://open.spotify.com/track/REPLACE_ME", // Reverser track URL
+  showSpotifyEmbed: true,                                         // embedded player under "Start with Reverser"
+
+  links: {
+    Spotify:   "https://open.spotify.com/artist/REPLACE_ME",
+    YouTube:   "https://www.youtube.com/@REPLACE_ME",
+    Instagram: "https://www.instagram.com/REPLACE_ME",
+    TikTok:    "https://www.tiktok.com/@REPLACE_ME",
+    Bandcamp:  "https://frogers.bandcamp.com"
+  }
+};
+</script>
+
+<!-- Plausible analytics. It reads ?ref= automatically as the traffic source.
+     Delete this line if you are not using Plausible. -->
+<script defer data-domain="frogersmusic.com" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
+<script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+<style>
+  :root {
+    --bg: #0e0e10;
+    --surface: #18181c;
+    --line: #2a2a31;
+    --text: #f3f1ec;
+    --muted: #a3a09a;
+    --accent: #e8ff59;
+    --accent-ink: #0e0e10;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f4ef;
+      --surface: #ffffff;
+      --line: #e2dfd7;
+      --text: #141414;
+      --muted: #5f5c56;
+      --accent: #141414;
+      --accent-ink: #f6f4ef;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  }
+  main {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 28px 16px 40px;
+  }
+  .cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #2b2b33, #121215);
+  }
+  .artist {
+    margin: 22px 0 2px;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  h1 {
+    margin: 0 0 8px;
+    font-size: clamp(26px, 7vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -.01em;
+  }
+  .sub { margin: 0 0 22px; color: var(--muted); }
+
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 17px 20px;
+    border: 0;
+    border-radius: var(--radius);
+    font: inherit;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--accent);
+    color: var(--accent-ink);
+    transition: transform .08s ease, opacity .15s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn:hover { opacity: .92; }
+  .btn-secondary {
+    margin-top: 10px;
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--line);
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+
+  .card {
+    margin-top: 18px;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .card p { margin: 0 0 12px; }
+  .note { font-size: 14px; color: var(--muted); }
+
+  form { display: flex; flex-direction: column; gap: 10px; }
+  input[type=email] {
+    width: 100%;
+    padding: 15px 16px;
+    font: inherit;
+    font-size: 16px; /* stops iOS zoom on focus */
+    color: var(--text);
+    background: var(--bg);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+  }
+  input[type=email]:focus { outline: none; border-color: var(--text); }
+  .thanks { display: none; font-weight: 600; }
+  .sent .thanks { display: block; }
+  .sent form { display: none; }
+
+  .about { margin: 26px 0 0; color: var(--muted); }
+
+  .start h2 { margin: 0 0 12px; font-size: 18px; }
+  .start iframe { display: block; width: 100%; height: 152px; border: 0; border-radius: 12px; }
+  .start .link { font-weight: 600; color: var(--text); }
+
+  .bc-embed { display: block; width: 100%; height: 120px; border: 0; margin-top: 18px; border-radius: 10px; }
+
+  nav.links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+    gap: 8px;
+    margin-top: 22px;
+  }
+  nav.links a {
+    padding: 12px 10px;
+    text-align: center;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  nav.links a:hover { border-color: var(--text); }
+
+  footer { margin-top: 34px; text-align: center; font-size: 13px; color: var(--muted); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <img class="cover" src="cover.jpg" width="1500" height="1500" alt="Succession EP cover art" fetchpriority="high" onerror="this.onerror=null;this.src='cover-placeholder.svg'">
+
+  <p class="artist">Frogers × Neon Imposter</p>
+  <h1 id="headline">Succession, the new EP. Out [release date].</h1>
+  <p class="sub">Name your price. Free is fine. Just leave an email.</p>
+
+  <!-- Main action. Released: Bandcamp. Not released: jumps to the signup. -->
+  <a class="btn" id="main-btn" href="#signup">Get it the day it drops</a>
+  <a class="btn btn-secondary" id="preorder-btn" href="#" hidden>Pre-order on Bandcamp</a>
+  <iframe class="bc-embed" id="bc-embed" title="Succession on Bandcamp" loading="lazy" hidden></iframe>
+
+  <section class="card" id="signup">
+    <p>New music and shows first. No spam, unsubscribe any time.</p>
+    <form id="signup-form" method="post" target="_blank">
+      <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address">
+      <input type="hidden" name="tag" id="ref-tag">
+      <input type="hidden" name="embed" value="1">
+      <button class="btn" type="submit">Sign me up</button>
+    </form>
+    <p class="thanks">You're in. Check your inbox to confirm.</p>
+  </section>
+
+  <p class="about" id="about"></p>
+
+  <section class="card start">
+    <h2>New here? Start with Reverser.</h2>
+    <div id="spotify-slot"><a class="link" id="reverser-link" href="#">Listen on Spotify →</a></div>
+  </section>
+
+  <nav class="links" id="links" aria-label="Frogers elsewhere"></nav>
+
+  <footer>© <span id="year"></span> Frogers · frogersmusic.com</footer>
+</main>
+
+<script>
+(function () {
+  var S = window.SITE;
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ?ref=ig etc. Plausible picks it up as the source on its own; we also
+  // remember it for the visit and tag new subscribers with it.
+  var ref = new URLSearchParams(location.search).get("ref");
+  try {
+    if (ref) sessionStorage.setItem("ref", ref);
+    else ref = sessionStorage.getItem("ref");
+  } catch (e) {}
+  ref = (ref || "direct").replace(/[^a-z0-9_-]/gi, "").slice(0, 20) || "direct";
+
+  function track(name, props) {
+    props = props || {};
+    props.ref = ref;
+    window.plausible(name, { props: props });
+  }
+
+  // Copy
+  $("headline").textContent = S.RELEASED
+    ? "Succession, the new EP from Frogers and Neon Imposter. Out now."
+    : "Succession, the new EP from Frogers and Neon Imposter, " + S.releaseDate + ".";
+  $("about").textContent = S.aboutLine;
+  $("year").textContent = new Date().getFullYear();
+
+  // Main button + state
+  var main = $("main-btn");
+  if (S.RELEASED) {
+    main.textContent = "Get Succession, name your price";
+    main.href = S.bandcampAlbum;
+    main.rel = "noopener";
+    main.addEventListener("click", function () { track("Bandcamp Click", { where: "main" }); });
+    if (S.bandcampEmbedId) {
+      var bc = $("bc-embed");
+      bc.src = "https://bandcamp.com/EmbeddedPlayer/album=" + encodeURIComponent(S.bandcampEmbedId) +
+               "/size=large/bgcol=181818/linkcol=e8ff59/tracklist=false/artwork=none/transparent=true/";
+      bc.hidden = false;
+    }
+  } else {
+    main.addEventListener("click", function (e) {
+      e.preventDefault();
+      track("Main Click", { where: "signup" });
+      $("signup").scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(function () { $("signup-form").email.focus({ preventScroll: true }); }, 350);
+    });
+    if (S.bandcampPreorder) {
+      var pre = $("preorder-btn");
+      pre.href = S.bandcampPreorder;
+      pre.hidden = false;
+      pre.addEventListener("click", function () { track("Bandcamp Click", { where: "preorder" }); });
+    }
+  }
+
+  // Email form: posts straight to Buttondown in a new tab (their confirm page),
+  // and we swap the form for a thank-you line here. Nothing is stored on this site.
+  var form = $("signup-form");
+  form.action = "https://buttondown.com/api/emails/embed-subscribe/" + encodeURIComponent(S.buttondownUser);
+  $("ref-tag").value = "src-" + ref;
+  form.addEventListener("submit", function () {
+    track("Signup", { state: S.RELEASED ? "released" : "prerelease" });
+    setTimeout(function () { $("signup").classList.add("sent"); }, 50);
+  });
+
+  // Start with Reverser
+  $("reverser-link").href = S.reverserSpotify;
+  var m = S.reverserSpotify.match(/open\.spotify\.com\/track\/([A-Za-z0-9]+)/);
+  if (S.showSpotifyEmbed && m && !/REPLACE/.test(S.reverserSpotify)) {
+    var f = document.createElement("iframe");
+    f.src = "https://open.spotify.com/embed/track/" + m[1] + "?utm_source=generator&theme=0";
+    f.title = "Reverser on Spotify";
+    f.loading = "lazy";
+    f.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+    $("spotify-slot").replaceChildren(f);
+  }
+
+  // Link row
+  var nav = $("links");
+  Object.keys(S.links).forEach(function (name) {
+    var a = document.createElement("a");
+    a.href = S.links[name];
+    a.textContent = name;
+    a.rel = "noopener";
+    a.addEventListener("click", function () { track("Link Click", { to: name }); });
+    nav.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>

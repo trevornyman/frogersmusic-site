@@ -20,13 +20,13 @@
    ================================================================== */
 window.SITE = {
   // Flip to true on release day. That is the whole launch.
-  RELEASED: false,
+  RELEASED: true,
 
   releaseDate: "November 21",
 
-  bandcampAlbum:    "https://frogers.bandcamp.com",  // swap for the album URL once it exists
+  bandcampAlbum:    "https://frogers.bandcamp.com/album/succession",
   bandcampPreorder: "",                               // pre-order page URL, or leave "" to hide
-  bandcampEmbedId:  "",                               // album id for the Bandcamp player (released state only), or ""
+  bandcampEmbedId:  "3551992008",                     // album id for the Bandcamp player, or "" to hide
 
   // Mailing list: Kit form ID, the number in your form's URL (app.kit.com/forms/1234567/...).
   // The form posts straight to Kit; nothing is stored here.
@@ -259,8 +259,10 @@ window.SITE = {
     main.addEventListener("click", function () { track("Bandcamp Click", { where: "main" }); });
     if (S.bandcampEmbedId) {
       var bc = $("bc-embed");
+      var dark = matchMedia("(prefers-color-scheme: dark)").matches;
       bc.src = "https://bandcamp.com/EmbeddedPlayer/album=" + encodeURIComponent(S.bandcampEmbedId) +
-               "/size=large/bgcol=181818/linkcol=e8ff59/tracklist=false/artwork=none/transparent=true/";
+               "/size=large/bgcol=" + (dark ? "18181c/linkcol=e8ff59" : "ffffff/linkcol=141414") +
+               "/tracklist=false/artwork=none/transparent=true/";
       bc.hidden = false;
     }
   } else {

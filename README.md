@@ -5,7 +5,7 @@ One static page that every social bio links to. No framework, no build step.
 ## Edit
 Everything lives in the `window.SITE` block at the top of `index.html`.
 
-- **Release day:** set `RELEASED: true`. The main button switches to Bandcamp, the headline says "Out now", and the email form stays below it.
+- **Release day:** set `RELEASED: true`. The main button switches to "Get Album" on Bandcamp, and the email form stays below it.
 - Fill in `releaseDate`, the Spotify/YouTube/Instagram/TikTok URLs, and `reverserSpotify` (the Spotify embed shows once that's a real track link).
 - `bandcampPreorder`: add the pre-order URL if one exists. It shows as a second button before release.
 - `bandcampEmbedId`: the album ID from Bandcamp's Share/Embed dialog. It shows a player in the released state.

@@ -95,7 +95,7 @@ window.SITE = {
     background: linear-gradient(135deg, #2b2b33, #121215);
   }
   .artist {
-    margin: 22px 0 2px;
+    margin: 22px 0 8px;
     font-size: 13px;
     letter-spacing: .14em;
     text-transform: uppercase;
@@ -188,6 +188,7 @@ window.SITE = {
 
   footer { margin-top: 34px; text-align: center; font-size: 13px; color: var(--muted); }
   [hidden] { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -195,7 +196,7 @@ window.SITE = {
   <img class="cover" src="cover.jpg" width="1000" height="1000" alt="Succession EP cover art: a white dogwood flower over a rainbow gradient" fetchpriority="high" onerror="this.onerror=null;this.src='cover-placeholder.svg'">
 
   <p class="artist">Frogers × Neon Imposter</p>
-  <h1 id="headline">Succession, the new EP from Frogers and Neon Imposter. Out November 21.</h1>
+  <h1 class="sr-only">Succession</h1>
   <p class="sub">Name your price. Free is fine. Just leave an email.</p>
 
   <!-- Main action. Released: Bandcamp. Not released: jumps to the signup. -->
@@ -245,15 +246,12 @@ window.SITE = {
   }
 
   // Copy
-  $("headline").textContent = S.RELEASED
-    ? "Succession, the new EP from Frogers and Neon Imposter. Out now."
-    : "Succession, the new EP from Frogers and Neon Imposter. Out " + S.releaseDate + ".";
   $("year").textContent = new Date().getFullYear();
 
   // Main button + state
   var main = $("main-btn");
   if (S.RELEASED) {
-    main.textContent = "Get Succession, name your price";
+    main.textContent = "Get Album";
     main.href = S.bandcampAlbum;
     main.rel = "noopener";
     main.addEventListener("click", function () { track("Bandcamp Click", { where: "main" }); });
